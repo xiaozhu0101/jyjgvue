@@ -33,7 +33,7 @@
             <el-input
                 prefix-icon="el-icon-user"
                 type="text"
-                v-model="ruleForm.id"
+                v-model="ruleForm.name"
                 autocomplete="off"
             ></el-input>
           </el-form-item>
@@ -41,7 +41,7 @@
             <el-input
                 prefix-icon="el-icon-message"
                 type="text"
-                v-model="ruleForm.id"
+                v-model="ruleForm.mail"
                 autocomplete="off"
             ></el-input>
           </el-form-item>
@@ -89,6 +89,8 @@ export default {
       ruleForm: {
         pass: "",
         id: "",
+        name:"",
+        mail:"",
         userkind:'1',
       },
       rules: {
