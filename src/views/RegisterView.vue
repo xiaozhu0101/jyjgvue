@@ -1,4 +1,5 @@
 <template>
+<!--  注册用户-->
   <div class="allmain">
     <div class="admin" >
       <div class="pos" v-loading="loading">

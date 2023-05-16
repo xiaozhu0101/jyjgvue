@@ -25,12 +25,12 @@
                 我的
               </span></el-menu-item>
 
-            <el-menu-item index="zsjh "style="float: right">
+            <el-menu-item index="zsjh "style="float: right"@click="enrollmentplan">
               <span  style="font-family: 宋体 ">
                 招生计划
               </span></el-menu-item>
 
-            <el-menu-item index="zsjz "style="float: right">
+            <el-menu-item index="zsjz "style="float: right"@click="studentrecruitmentbrochure">
               <span  style="font-family: 宋体 ">
                 招生简章
               </span></el-menu-item>
@@ -58,8 +58,6 @@
         <div class="main1">
           <router-view/>
         </div>
-
-
 
       </el-main>
       <el-footer>
@@ -104,6 +102,12 @@ export default {
     },
     registercourse(){
       this.$router.push("/registercourse")
+    },
+    studentrecruitmentbrochure(){
+      this.$router.push("/studentrecruitmentbrochure")
+    },
+    enrollmentplan(){
+      this.$router.push("/enrollmentplan")
     },
     mine(){
       this.userkind = localStorage.getItem("userkind");

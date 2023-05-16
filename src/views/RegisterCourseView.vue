@@ -1,4 +1,5 @@
 <template>
+<!--  在线报名-->
   <div class="allmain">
     <div class = "block" >
       <el-row gutter="15">

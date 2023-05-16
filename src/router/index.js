@@ -45,6 +45,18 @@ const routes = [
     name: 'RegisterView',
     component: () => import(/* webpackChunkName: "about" */ '../views/RegisterView.vue')
   },
+  {
+    path: '/studentrecruitmentbrochure',
+    name: 'StudentRecruitmentBrochureView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/StudentRecruitmentBrochureView.vue')
+  },
+  {
+    path: '/enrollmentplan',
+    name: 'EnrollmentPlanView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/EnrollmentPlanView.vue')
+  },
+
+
 ]
 
 const router = new VueRouter({
