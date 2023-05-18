@@ -1,16 +1,16 @@
 <template>
-<!--  在线报名-->
+  <!--  在线报名-->
   <div class="allmain">
     <div class = "block" >
       <el-row gutter="15">
         <el-col :span="6" >
           <!--            机构动态 左-->
           <div class="left">
-            <!-- 动态栏上部分-->
+            <!--              机构动态栏上部分-->
             <el-row style="margin-bottom: 8px">
               <el-col :span="21">
                   <span class="block-left">
-                    机构动态
+                    招生计划
                   </span></el-col>
               <el-col :span="3">
               <span class="block-right">
@@ -21,7 +21,7 @@
             <div  >
               <ul>
                 <li class="textInItem"
-                    v-for="item in zswa"
+                    v-for="item in zsjh"
                     :key="item">
                   {{item}}
                 </li>
@@ -67,12 +67,45 @@
             </div>
 
             <hr style="margin: 10px ;color: #5a7679">
-            <div style="word-wrap: break-word ;font-size: 12px;color: #4d5664;margin-left: 10px;margin-right: 10px;padding-top:50px;padding-bottom:50px;text-align: center;text-indent: 2em">
-              <p v-html="textaboutus"></p>
+            <div class="formstyle">
+              <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm" label-position="left">
+                <el-form-item label="名 字：" prop="name">
+                  <el-input v-model="ruleForm.name"></el-input>
+                </el-form-item>
+                <el-form-item label="联系方式：" prop="number" required>
+                  <el-input v-model="ruleForm.number"></el-input>
+                </el-form-item>
+
+
+                <el-form-item label="课程选择："prop="course" required>
+                  <el-col :span="24">
+                    <el-select v-model="ruleForm.course" filterable placeholder="请选择报名课程" style="width: 100%;">
+                      <el-option
+                          v-for="item in courses"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                      </el-option>
+                    </el-select>
+                  </el-col>
+
+                </el-form-item>
+
+                <el-form-item label="备注：" prop="desc">
+                  <el-input type="textarea" v-model="ruleForm.desc"></el-input>
+                </el-form-item>
+
+                <el-form-item>
+                  <el-button type="primary" @click="submitForm('ruleForm')">报名</el-button>
+                  <el-button @click="resetForm('ruleForm')">重置</el-button>
+                </el-form-item>
+              </el-form>
             </div>
+
           </div>
 
         </el-col>
+
       </el-row>
     </div>
   </div>
@@ -90,11 +123,68 @@ export default {
         '针对日本市场推出Link移动 VR 头盔:U11专属',
         '普及太快！我们该不该对机器人征税呢',
         '解放人类的双手 机器人尝试自主学习抓取物体'],
-    }
-  }
+      state2: '',
+      // test
+      courses: [{
+        value: '选项1',
+        label: 'Java'
+      }, {
+        value: '选项2',
+        label: 'C'
+      }, {
+        value: '选项3',
+        label: 'C#'
+      }, {
+        value: '选项4',
+        label: 'python'
+      }, {
+        value: '选项5',
+        label: 'html'
+      }],
+
+
+      ruleForm: {
+        name: '',
+        number:'',
+        course: '',
+        resource: '',
+        desc: ''
+      },
+      rules: {
+        name: [
+          { required: true, message: '请输入您的名字', trigger: 'blur' },
+        ],
+        number: [
+          { required: true, message: '请输入您的联系方式', trigger: 'blur' },
+          { min: 10, max: 12, message: '输入正确的手机号', trigger: 'blur' }
+        ],
+        course: [
+          { required: true, message: '请输入您要试听的课程', trigger: 'blur' },
+        ],
+        data1: [
+          { required: true, message: '请输入您要试听的时间', trigger: 'blur' },
+        ],
+
+      }
+    };
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!');
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
+    },
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    },
+
+  },
+
+
 }
 </script>
-
-<style >
-
-</style>

@@ -5,11 +5,11 @@
       <el-col :span="6" >
         <!--            机构动态 左-->
         <div class="left">
-          <!-- 动态栏上部分-->
+          <!--              机构动态栏上部分-->
           <el-row style="margin-bottom: 8px">
             <el-col :span="21">
                   <span class="block-left">
-                    机构动态
+                    招生计划
                   </span></el-col>
             <el-col :span="3">
               <span class="block-right">
@@ -20,7 +20,7 @@
           <div  >
             <ul>
               <li class="textInItem"
-                  v-for="item in zswa"
+                  v-for="item in zsjh"
                   :key="item">
                 {{item}}
               </li>
