@@ -67,7 +67,8 @@
             </div>
 
             <hr style="margin: 10px ;color: #5a7679">
-            <div style="word-wrap: break-word ;font-size: 12px;color: #4d5664;margin-left: 10px;margin-right: 10px;padding-bottom:30px;text-align: center;text-indent: 2em">
+            <h4>招生简章</h4>
+            <div style="word-wrap: break-word ;font-size: 12px;color: #4d5664;margin-left: 10px;margin-right: 10px;padding-bottom:30px;margin-top:10px;text-align: center;text-indent: 2em">
               <p v-html="zsjz"></p>
             </div>
           </div>

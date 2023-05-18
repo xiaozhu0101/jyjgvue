@@ -73,24 +73,34 @@
                   <el-input v-model="ruleForm.name"></el-input>
                 </el-form-item>
                 <el-form-item label="联系方式：" prop="number" required>
-                  <el-input v-model="ruleForm.name"></el-input>
+                  <el-input v-model="ruleForm.number"></el-input>
                 </el-form-item>
-                <el-form-item label="试听课程：" prop="course" required>
-                  <el-input v-model="ruleForm.name"></el-input>
-                </el-form-item>
-                <el-form-item label="时间选择：" required>
+
+
+                <el-form-item label="课程选择："prop="course" required>
                   <el-col :span="11">
-                    <el-form-item prop="date1">
-                      <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.date1" style="width: 100%;"></el-date-picker>
-                    </el-form-item>
+                    <el-select v-model="ruleForm.course" filterable placeholder="请选择试课课程">
+                      <el-option
+                          v-for="item in courses"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                      </el-option>
+                    </el-select>
                   </el-col>
-                  <el-col class="line" :span="2">-</el-col>
+                  <el-col class="line" :span="2">时间</el-col>
                   <el-col :span="11">
-                    <el-form-item prop="date2">
-                      <el-time-picker placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
-                    </el-form-item>
+                    <el-select v-model="ruleForm.date" placeholder="请选择课程时间">
+                      <el-option
+                          v-for="item in dates"
+                          :key="item.value"
+                          :label="item.label"
+                          :value="item.value">
+                      </el-option>
+                    </el-select>
                   </el-col>
                 </el-form-item>
+
                 <el-form-item label="备注：" prop="desc">
                   <el-input type="textarea" v-model="ruleForm.desc"></el-input>
                 </el-form-item>
@@ -119,30 +129,65 @@ export default {
       zswa: ['本田预计2025年推无人驾驶汽车 比其他公司晚5年',
         '针对日本市场推出Link移动 VR 头盔:U11专属',
         '普及太快！我们该不该对机器人征税呢',
-        '解放人类的双手 机器人尝试自主学习抓取物体'], ruleForm: {
+        '解放人类的双手 机器人尝试自主学习抓取物体'],
+      state2: '',
+      // test
+      courses: [{
+        value: '选项1',
+        label: 'Java'
+      }, {
+        value: '选项2',
+        label: 'C'
+      }, {
+        value: '选项3',
+        label: 'C#'
+      }, {
+        value: '选项4',
+        label: 'python'
+      }, {
+        value: '选项5',
+        label: 'html'
+      }],
+      dates: [{
+        value: '选项1',
+        label: '2023-6-1 13：44'
+      }, {
+        value: '选项2',
+        label: '2023-6-1 13：55'
+      }, {
+        value: '选项3',
+        label: '2023-6-1 12：44'
+      }, {
+        value: '选项4',
+        label: '2023-6-2 13：44'
+      }, {
+        value: '选项5',
+        label: '2023-6-3 13：44'
+      }],
+
+      ruleForm: {
         name: '',
         number:'',
-        course:'',
-        date1: '',
-        date2: '',
-        delivery: false,
+        course: '',
+        date:'',
         resource: '',
         desc: ''
       },
       rules: {
         name: [
-          { required: true, message: '请输入活动名称', trigger: 'blur' },
-          { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          { required: true, message: '请输入您的名字', trigger: 'blur' },
         ],
-        date1: [
-          { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+        number: [
+          { required: true, message: '请输入您的联系方式', trigger: 'blur' },
+          { min: 10, max: 12, message: '输入正确的手机号', trigger: 'blur' }
         ],
-        date2: [
-          { type: 'date', required: true, message: '请选择时间', trigger: 'change' }
+        course: [
+          { required: true, message: '请输入您要试听的课程', trigger: 'blur' },
         ],
-        resource: [
-          { required: true, message: '请选择活动资源', trigger: 'change' }
+        data1: [
+          { required: true, message: '请输入您要试听的时间', trigger: 'blur' },
         ],
+
       }
     };
   },
@@ -159,7 +204,10 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
-    }
-  }
+    },
+
+},
+
+
 }
 </script>
