@@ -69,33 +69,42 @@
             <hr style="margin: 10px ;color: #5a7679">
 
             <div >
-              <el-form :inline="true" :model="selectForm" class="demo-form-inline">
-                <el-form-item >
-                  <el-input v-model="selectForm.course" placeholder="课程"></el-input>
-                </el-form-item>
-                <el-form-item>
-                  <el-button type="primary" @click="onSubmit">查询</el-button>
-                </el-form-item>
-              </el-form>
+
               <el-table
-                  :data="courseForm"
+                  :data="courseForm.filter(data => !search || data.course.toLowerCase().includes(search.toLowerCase()))"
+                  style="width: 100%;background: #d4e4e5"
+                  :header-cell-style="{
+                  background:'#d4e4e5'}"
                   border
-                  style="width: 100%"
                   @row-click="rowClick">
+
                 <el-table-column
-                    prop="bookName"
-                    label="小说名"
+                    prop="course"
+                    label="课程"
                     width="180">
                 </el-table-column>
                 <el-table-column
-                    prop="goodNum"
-                    label="热度"
+                    prop="teacher"
+                    label="教师"
                     width="100"
                 >
                 </el-table-column>
                 <el-table-column
-                    prop="info"
-                    label="介绍">
+                    prop="date"
+                    label="开课时间">
+                </el-table-column>
+                <el-table-column
+                    prop="num"
+                    label="课程容量">
+                </el-table-column>
+                <el-table-column
+                    align="right">
+                  <template slot="header" slot-scope="scope">
+                    <el-input
+                        v-model="search"
+                        size="mini"
+                        placeholder="输入关键字搜索"/>
+                  </template>
                 </el-table-column>
               </el-table>
             </div>
@@ -118,14 +127,16 @@ export default {
         '针对日本市场推出Link移动 VR 头盔:U11专属',
         '普及太快！我们该不该对机器人征税呢',
         '解放人类的双手 机器人尝试自主学习抓取物体'],
-      courseForm:[],
-      selectForm: {
-        course:'',
-      },
+      zsjh:['JAVA','C++',"C#","Python"],
+      courseForm:[{course:'java',teacher:'王老师',date:'2023-6-1',num:59}],
+      search: '',
     }
   },
   methods: {
     onSubmit(course) {
+
+    },
+    rowClick(row){
 
     }
   }

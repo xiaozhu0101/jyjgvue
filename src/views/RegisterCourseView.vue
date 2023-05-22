@@ -123,6 +123,7 @@ export default {
         '针对日本市场推出Link移动 VR 头盔:U11专属',
         '普及太快！我们该不该对机器人征税呢',
         '解放人类的双手 机器人尝试自主学习抓取物体'],
+      zsjh:['JAVA','C++',"C#","Python"],
       state2: '',
       // test
       courses: [{
