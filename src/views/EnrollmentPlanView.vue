@@ -71,8 +71,9 @@
             <div >
 
               <el-table
-                  :data="courseForm.filter(data => !search || data.course.toLowerCase().includes(search.toLowerCase()))"
-                  style="width: 100%;background: #d4e4e5"
+                  :data="courseForm.filter(data => !search || data.course.toLowerCase().includes(search.toLowerCase()) ||data.teacher.toLowerCase().includes(search.toLowerCase()) )"
+                  style="width: 100%"
+                  :cell-style="{ background:'#d4e4e5'}"
                   :header-cell-style="{
                   background:'#d4e4e5'}"
                   border
@@ -103,7 +104,7 @@
                     <el-input
                         v-model="search"
                         size="mini"
-                        placeholder="输入关键字搜索"/>
+                        placeholder="输入课程或老师信息搜索"/>
                   </template>
                 </el-table-column>
               </el-table>
@@ -128,7 +129,11 @@ export default {
         '普及太快！我们该不该对机器人征税呢',
         '解放人类的双手 机器人尝试自主学习抓取物体'],
       zsjh:['JAVA','C++',"C#","Python"],
-      courseForm:[{course:'java',teacher:'王老师',date:'2023-6-1',num:59}],
+      courseForm:[{course:'java',teacher:'王老师',date:'2023-6-1',num:59},
+        {course:'C',teacher:'张老师',date:'2023-6-1',num:20},
+        {course:'C++',teacher:'赵老师',date:'2023-6-1',num:40},
+        {course:'Python',teacher:'李老师',date:'2023-6-1',num:29},
+        {course:'项目管理',teacher:'王老师',date:'2023-6-1',num:49},],
       search: '',
     }
   },

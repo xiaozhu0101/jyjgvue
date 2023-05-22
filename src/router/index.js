@@ -55,6 +55,11 @@ const routes = [
     name: 'EnrollmentPlanView',
     component: () => import(/* webpackChunkName: "about" */ '../views/EnrollmentPlanView.vue')
   },
+  {
+    path: '/customer',
+    name: 'CustomerView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/CustomerView.vue')
+  },
 
 
 ]
