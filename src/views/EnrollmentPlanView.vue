@@ -67,8 +67,37 @@
             </div>
 
             <hr style="margin: 10px ;color: #5a7679">
-            <div style="word-wrap: break-word ;font-size: 12px;color: #4d5664;margin-left: 10px;margin-right: 10px;padding-top:50px;padding-bottom:50px;text-align: center;text-indent: 2em">
-              <p v-html="textaboutus"></p>
+
+            <div >
+              <el-form :inline="true" :model="selectForm" class="demo-form-inline">
+                <el-form-item >
+                  <el-input v-model="selectForm.course" placeholder="课程"></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="onSubmit">查询</el-button>
+                </el-form-item>
+              </el-form>
+              <el-table
+                  :data="courseForm"
+                  border
+                  style="width: 100%"
+                  @row-click="rowClick">
+                <el-table-column
+                    prop="bookName"
+                    label="小说名"
+                    width="180">
+                </el-table-column>
+                <el-table-column
+                    prop="goodNum"
+                    label="热度"
+                    width="100"
+                >
+                </el-table-column>
+                <el-table-column
+                    prop="info"
+                    label="介绍">
+                </el-table-column>
+              </el-table>
             </div>
           </div>
 
@@ -89,6 +118,15 @@ export default {
         '针对日本市场推出Link移动 VR 头盔:U11专属',
         '普及太快！我们该不该对机器人征税呢',
         '解放人类的双手 机器人尝试自主学习抓取物体'],
+      courseForm:[],
+      selectForm: {
+        course:'',
+      },
+    }
+  },
+  methods: {
+    onSubmit(course) {
+
     }
   }
 }
