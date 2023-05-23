@@ -13,7 +13,7 @@
                     招生计划
                   </span></el-col>
               <el-col :span="3">
-              <span class="block-right">
+              <span class="block-right"@click="EnrollmentPlan">
                 更多>>
               </span>
               </el-col>
@@ -206,6 +206,9 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
+    EnrollmentPlan(){
+      this.$router.push("/enrollmentplan")
+    }
 
 },
 

@@ -12,7 +12,7 @@
                     招生计划
                   </span></el-col>
             <el-col :span="3">
-              <span class="block-right">
+              <span class="block-right" @click="EnrollmentPlan">
                 更多>>
               </span>
             </el-col>
@@ -89,6 +89,11 @@ export default {
         '普及太快！我们该不该对机器人征税呢',
         '解放人类的双手 机器人尝试自主学习抓取物体'],
       zsjh:['JAVA','C++',"C#","Python"],
+    }
+  } ,
+  methods:{
+    EnrollmentPlan(){
+      this.$router.push("/enrollmentplan")
     }
   }
 }

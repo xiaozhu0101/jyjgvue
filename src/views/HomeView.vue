@@ -29,7 +29,7 @@
                     招生计划
                   </span></el-col>
                 <el-col :span="3">
-              <span class="block-right">
+              <span class="block-right" @click="EnrollmentPlan">
                 更多>>
               </span>
                 </el-col>
@@ -125,6 +125,11 @@ export default {
           '（统计日期截至2022年12月31日）',
       imgdata:['https://hq.gcu.edu.cn/_upload/article/images/17/8f/f0b4134140e28183362d7bd51d17/f0c8d75b-169d-4cc0-95fb-49f93d34dbf3.jpg'
       ,'https://hq.gcu.edu.cn/_upload/article/images/07/b4/6849638942bb81c87597980d7651/00d63dd3-8914-4256-939c-d8ac772e32ed.jpg'],
+    }
+  },
+  methods:{
+    EnrollmentPlan(){
+      this.$router.push("/enrollmentplan")
     }
   }
 }

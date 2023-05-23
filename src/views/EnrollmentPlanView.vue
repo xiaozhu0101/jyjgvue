@@ -13,7 +13,7 @@
                     招生计划
                   </span></el-col>
               <el-col :span="3">
-              <span class="block-right">
+              <span class="block-right"@click="EnrollmentPlan">
                 更多>>
               </span>
               </el-col>
@@ -96,7 +96,8 @@
                 </el-table-column>
                 <el-table-column
                     prop="num"
-                    label="课程容量">
+                    label="课程容量"
+                    width="100">
                 </el-table-column>
                 <el-table-column
                     align="right">
@@ -144,6 +145,10 @@ export default {
     rowClick(row){
 
     }
+    ,
+      EnrollmentPlan(){
+        this.$router.push("/enrollmentplan")
+      }
   }
 }
 </script>
