@@ -109,14 +109,9 @@ export default {
       this.$router.push("/enrollmentplan")
     },
     mine(){
-      this.userkind = localStorage.getItem("userkind");
-      if (this.userkind != null){
-        this.$router.push('/writer')
-        console.log("userid"+this.userid)
-      }
-      else{
+
         this.$router.push('/login')
-      }
+
     },
   }
 }

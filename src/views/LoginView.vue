@@ -57,7 +57,10 @@ export default {
     var validateId = (rule, value, callback) => {
       if (value === "") {
         callback(new Error("请输入用户信息"));
-      } else {
+      }else if (value.length = 11) {
+      callback(new Error("长度必须是11!"));
+      }
+      else {
         if (this.ruleForm.id !== "") {
           this.$refs.ruleForm.validateField("id");
         }
@@ -75,6 +78,7 @@ export default {
     };
     return {
       loading: false,
+
       ruleForm: {
         pass: "",
         id: "",
@@ -86,21 +90,43 @@ export default {
       },
     };
   },
+
+  beforeCreate(){
+
+    if(localStorage.getItem("userid")!=''){
+      if(localStorage.getItem("userkind")=='1'){
+        this.$router.push("/customer")
+      }
+    }
+  },
+
   methods: {
     // 表单验证
     submitForm(formName) {
-      this.$axios.post('/login', this.ruleForm)
-          .then(res => {
-        if (valid) {
+
+        if (this.ruleForm.pass == "1111" && this.ruleForm.id =="11111111111") {
           this.loading = true;
           setTimeout(() => {
             this.loading = false;
-          }, 2000);
+            this.$message({
+              message: '恭喜你，登陆成功',
+              type: 'success'
+            });
+            localStorage.setItem("userid",this.ruleForm.id)
+            localStorage.setItem("userkind",this.ruleForm.userkind)
+            this.$router.push("/home")
+          }, 500);
+
         } else {
-          console.log("error submit!!");
-          return false;
+          this.loading = true;
+          setTimeout(() => {
+            this.loading = false;
+            this.$message.error('账号密码错了');
+            return false;
+          }, 2000);
+
         }
-      });
+     ;
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();

@@ -77,7 +77,7 @@
                   :header-cell-style="{
                   background:'#d4e4e5'}"
                   border
-                  @row-click="rowClick">
+                  >
 
                 <el-table-column
                     prop="course"
@@ -110,14 +110,25 @@
                   <template slot-scope="scope">
                     <el-button
                         size="mini"
-                        @click="handleEdit(scope.$index, scope.row)">Edit</el-button>
-                    <el-button
-                        size="mini"
-                        type="danger"
-                        @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+                        @click="drawer(scope.$index, scope.row)" >查看详情</el-button>
                   </template>
+
                 </el-table-column>
               </el-table>
+              <el-drawer
+                  :visible.sync="drawer1"
+                  >
+                <div style="padding-left: 20px">
+                <el-descriptions title="用户信息" column="1">
+                  <el-descriptions-item label="课程">{{ couse.course }}</el-descriptions-item>
+                  <el-descriptions-item label="教师">{{ couse.teacher }}</el-descriptions-item>
+                  <el-descriptions-item label="上课时间">{{ couse.date }}</el-descriptions-item>
+                  <el-descriptions-item label="课程容量">{{ couse.num }}</el-descriptions-item>
+
+                  <el-descriptions-item label="联系地址">江苏省苏州市吴中区吴中大道 1188 号</el-descriptions-item>
+                </el-descriptions>
+                </div>
+              </el-drawer>
             </div>
           </div>
 
@@ -133,6 +144,8 @@ export default {
   name: "AboutUsView",
   data() {
     return {
+      drawer1:false,
+      couse:'',
       texttop:'招生计划',
       textaboutus: '邮箱：1414313124@qq.com<br>联系电话：8888-8888-88 <br> 邮政编码：00000 <br> 地址：广州城市理工学院',
       zswa: ['培训机构管理系统助你轻松应对市场变化',
@@ -150,16 +163,14 @@ export default {
     }
   },
   methods: {
-    onSubmit(course) {
 
-    },
-    rowClick(row){
-
-    }
-    ,
       EnrollmentPlan(){
         this.$router.push("/enrollmentplan")
-      }
+      },
+    drawer(index,row){
+      this.drawer1 = true
+      this.couse = row
+    }
   }
 }
 </script>

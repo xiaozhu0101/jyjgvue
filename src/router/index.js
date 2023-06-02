@@ -62,7 +62,7 @@ const routes = [
     children:[
 
       {
-        path: '/customer/customerinfo',
+        path: '/customer',
         name: 'customerinfo',
         component: () => import(/* webpackChunkName: "about" */ '../views/Customer/Customerinfo.vue')
       },
@@ -71,6 +71,12 @@ const routes = [
         name: 'testcourseinfo',
         component: () => import(/* webpackChunkName: "about" */ '../views/Customer/TestCourseInfoView.vue')
       },
+      {
+        path: '/customer/registercourseinfo',
+        name: 'registercourseinfo',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Customer/RegisterCoureInfoView.vue')
+      },
+
   ]
   },
 

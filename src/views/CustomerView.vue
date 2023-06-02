@@ -4,7 +4,7 @@
     <el-col :span="4">
   <el-menu
       style="height: 450px"
-      default-active="2"
+      default-active="1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -20,7 +20,7 @@
       <i class="el-icon-document"></i>
       <span slot="title">试课记录</span>
     </el-menu-item>
-    <el-menu-item index="3">
+    <el-menu-item index="3" @click="registercourseinfo">
       <i class="el-icon-document"></i>
       <span slot="title">报名记录</span>
     </el-menu-item>
@@ -49,10 +49,14 @@ export default {
       console.log(key, keyPath);
     },
     customerinfo(){
-      this.$router.push("/customer/customerinfo")
+      this.$router.push("/customer")
     },
     testcourseinfo(){
       this.$router.push("/customer/testcourseinfo")
+    },
+    registercourseinfo(){
+      this.$router.push("/customer/registercourseinfo")
+
     }
   }
 }
