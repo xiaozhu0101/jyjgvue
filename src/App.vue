@@ -55,9 +55,8 @@
       </el-header>
 
       <el-main >
-        <div class="main1">
+
           <router-view/>
-        </div>
 
       </el-main>
       <el-footer>
@@ -155,12 +154,7 @@ export default {
   font-size: 10px;
   font-family: 宋体;
 }
-.main1{
-  margin-left: 70px;
-  margin-right: 70px;
-  background-color: #eeeeee;
 
-}
 
 * {
   margin: 0px;
