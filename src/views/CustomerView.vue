@@ -1,7 +1,7 @@
 <template>
 <div class="main2">
   <el-row >
-    <el-col :span="4">
+    <el-col :span="3">
   <el-menu
       style="height: 450px"
       default-active="1"
@@ -24,10 +24,14 @@
       <i class="el-icon-document"></i>
       <span slot="title">报名记录</span>
     </el-menu-item>
+    <el-menu-item index="4" @click="exit">
+      <i class="el-icon-document"></i>
+      <span slot="title">退出登录</span>
+    </el-menu-item>
 
   </el-menu>
     </el-col>
-    <el-col :span="20">
+    <el-col :span="21">
       <div class="mine">
       <router-view>
       </router-view>
@@ -47,6 +51,23 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    exit(){
+      this.$confirm('是否退出登录, 是否继续?', '提示', {
+        confirmButtonText: '确定退出',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        localStorage.removeItem("userid");
+        localStorage.removeItem("userkind");
+        this.$router.push('/home')
+        this.$message({
+          type: 'success',
+          message: '退出账号成功!'
+        });
+      }).catch(() => {
+      });
+
     },
     customerinfo(){
       this.$router.push("/customer")

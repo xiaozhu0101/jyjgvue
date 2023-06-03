@@ -1,21 +1,36 @@
 <template>
 <div>
+  <h4 style="float: left">报名课程信息</h4>
   <el-table
       :data="tableData"
       style="width: 100%">
     <el-table-column
+        prop="course"
+        label="课程"
+        width="180">
+    </el-table-column>
+    <el-table-column
+        prop="teacher"
+        label="教师"
+        width="180">
+    </el-table-column>
+    <el-table-column
+        prop="classroom"
+        label="课室"
+        width="180">
+    </el-table-column>
+    <el-table-column
         prop="date"
-        label="日期"
-        width="180">
+        label="开课时间"
+        width="120">
     </el-table-column>
-    <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-    </el-table-column>
-    <el-table-column
-        prop="address"
-        label="地址">
+    <el-table-column label="操作" align="right">
+      <template slot-scope="scope">
+        <el-button
+            size="mini"
+            type="danger"
+            @click="courseDelete( scope.row)">取消报名</el-button>
+      </template>
     </el-table-column>
   </el-table>
 </div>
@@ -26,24 +41,16 @@ export default {
   name: "RegisterCoureInfoView",
   data() {
     return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      tableData: [{course:'java',teacher:'王老师',classroom:'a1-302',date:"6月1日 13：40"},
+        {course:'C',teacher:'张老师',classroom:'a1-302',date:"6月1日 16：40"},
+        {course:'C++',teacher:'赵老师',classroom:'a1-302',date:"6月3日 13：40"},
+        {course:'Python',teacher:'李老师',classroom:'a1-302',date:"6月4日 13：40"},
+        {course:'项目管理',teacher:'王老师',classroom:'a1-302',date:"6月5日 13：40"},],
     }
+  },
+  methods: {
+    courseDelete(row) {
+    },
   }
 }
 </script>

@@ -103,29 +103,34 @@ export default {
   methods: {
     // 表单验证
     submitForm(formName) {
+      console.log(this.ruleForm.id ,this.ruleForm.pass)
+      this.$axios.post('http://localhost:8000/customer/login', { phone:this.ruleForm.id  ,password: this.ruleForm.pass})
+          .then(res => {
+            if (res.data.code==1) {
+              this.loading = true;
+              setTimeout(() => {
+                this.loading = false;
 
-        if (this.ruleForm.pass == "1111" && this.ruleForm.id =="11111111111") {
-          this.loading = true;
-          setTimeout(() => {
-            this.loading = false;
-            this.$message({
-              message: '恭喜你，登陆成功',
-              type: 'success'
-            });
-            localStorage.setItem("userid",this.ruleForm.id)
-            localStorage.setItem("userkind",this.ruleForm.userkind)
-            this.$router.push("/home")
-          }, 500);
+                this.$message({
+                  message: '恭喜你，登陆成功',
+                  type: 'success'
+                });
+                localStorage.setItem("userid",this.ruleForm.id)
+                localStorage.setItem("userkind",this.ruleForm.userkind)
+                this.$router.push("/home")
+              }, 500);
 
-        } else {
-          this.loading = true;
-          setTimeout(() => {
-            this.loading = false;
-            this.$message.error('账号密码错了');
-            return false;
-          }, 2000);
+            } else {
+              this.loading = true;
+              setTimeout(() => {
+                this.loading = false;
+                this.$message.error('账号密码错了');
+                return false;
+              }, 2000);
 
-        }
+            }
+          })
+
      ;
     },
     resetForm(formName) {
