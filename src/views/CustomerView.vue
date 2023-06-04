@@ -3,7 +3,7 @@
   <el-row >
     <el-col :span="3">
   <el-menu
-      style="height: 450px"
+      style="height: 500px"
       default-active="1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
@@ -17,15 +17,19 @@
       <span slot="title">个人信息</span>
     </el-menu-item>
     <el-menu-item index="2" @click="testcourseinfo">
-      <i class="el-icon-document"></i>
+      <i class="el-icon-s-data"></i>
       <span slot="title">试课记录</span>
     </el-menu-item>
     <el-menu-item index="3" @click="registercourseinfo">
       <i class="el-icon-document"></i>
       <span slot="title">报名记录</span>
     </el-menu-item>
-    <el-menu-item index="4" @click="exit">
-      <i class="el-icon-document"></i>
+    <el-menu-item index="4" @click="changeinfo">
+      <i class="el-icon-s-tools"></i>
+      <span slot="title">修改信息</span>
+    </el-menu-item>
+    <el-menu-item index="5" @click="exit">
+      <i class="el-icon-s-promotion"></i>
       <span slot="title">退出登录</span>
     </el-menu-item>
 
@@ -52,6 +56,7 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
+
     exit(){
       this.$confirm('是否退出登录, 是否继续?', '提示', {
         confirmButtonText: '确定退出',
@@ -78,7 +83,12 @@ export default {
     registercourseinfo(){
       this.$router.push("/customer/registercourseinfo")
 
+    },
+    changeinfo(){
+      this.$router.push("/customer/changeinfo")
+
     }
+
   }
 }
 </script>
