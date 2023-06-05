@@ -16,7 +16,7 @@
             <el-input
                 prefix-icon="el-icon-user"
                 type="text"
-                v-model="ruleForm.id"
+                v-model="ruleForm.phone"
                 autocomplete="off"
             ></el-input>
           </el-form-item>
@@ -26,7 +26,7 @@
 
                 show-password
                 type="password"
-                v-model="ruleForm.pass"
+                v-model="ruleForm.password"
                 autocomplete="off"
             ></el-input>
           </el-form-item>
@@ -42,12 +42,12 @@
             <el-input
                 prefix-icon="el-icon-message"
                 type="text"
-                v-model="ruleForm.mail"
+                v-model="ruleForm.email"
                 autocomplete="off"
             ></el-input>
           </el-form-item>
           <el-form-item label="*用户类型:">
-            <el-radio-group v-model="ruleForm.userkind">
+            <el-radio-group v-model="userkind">
               <el-radio label="1">学员</el-radio>
               <el-radio label="2">招生员</el-radio>
             </el-radio-group>
@@ -68,9 +68,29 @@ export default {
   data() {
     var validateId = (rule, value, callback) => {
       if (value === "") {
-        callback(new Error("请输入用户信息"));
+        callback(new Error("请输入手机号"));
       } else {
-        if (this.ruleForm.id !== "") {
+        if (this.ruleForm.phone !== "") {
+          this.$refs.ruleForm.validateField("id");
+        }
+        callback();
+      }
+    };
+    var validateName = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请输入姓名"));
+      } else {
+        if (this.ruleForm.name !== "") {
+          this.$refs.ruleForm.validateField("id");
+        }
+        callback();
+      }
+    };
+    var validateMail = (rule, value, callback) => {
+      if (value === "") {
+        callback(new Error("请输入邮箱"));
+      } else {
+        if (this.ruleForm.email !== "") {
           this.$refs.ruleForm.validateField("id");
         }
         callback();
@@ -87,34 +107,54 @@ export default {
     };
     return {
       loading: false,
+      userkind:'1',
       ruleForm: {
-        pass: "",
-        id: "",
+        password: "",
+        phone: "",
         name:"",
-        mail:"",
-        userkind:'1',
+        email:"",
       },
       rules: {
-        pass: [{ validator: validatePass, trigger: "blur" }],
-        id: [{ validator: validateId, trigger: "blur" }],
+        password: [{ validator: validatePass, trigger: "blur" }],
+        phone: [{ validator: validateId, trigger: "blur" }],
+        name: [{ validator: validateName, trigger: "blur" }],
+        email: [{ validator: validateMail, trigger: "blur" }],
+
+
       },
     };
   },
   methods: {
     // 表单验证
     submitForm(formName) {
-      this.$axios.post('/register', this.ruleForm)
-          .then(res => {
-            if (valid) {
-              this.loading = true;
-              setTimeout(() => {
-                this.loading = false;
-              }, 2000);
-            } else {
-              console.log("error submit!!");
+
+      this.$axios.post('http://localhost:8000/customer/register', this.ruleForm
+
+    )
+        .then(res => {
+          if (res.data.code == 1) {
+            this.loading = true;
+            setTimeout(() => {
+              this.loading = false;
+
+              this.$message({
+                message: '恭喜你，注册成功',
+                type: 'success'
+              });
+
+              this.$router.push("/login")
+            }, 500);
+
+          } else {
+            this.loading = true;
+            setTimeout(() => {
+              this.loading = false;
+              this.$message.error('注册失败');
               return false;
-            }
-          });
+            }, 2000);
+
+          }
+        })
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();

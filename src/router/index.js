@@ -84,6 +84,57 @@ const routes = [
 
   ]
   },
+  {
+    path: '/administrators',
+    name: 'administrators',
+    component: () => import(/* webpackChunkName: "about" */ '../views/AdministratorsView.vue'),
+    children:[
+
+      {
+        path: '/administrators',
+        name: 'administrators',
+        component: () => import(/* webpackChunkName: "about" */ '../views/administrators/AdministratorsInfoView.vue')
+      },
+
+
+      {
+        path: '/administrators/courseinginfo',
+        name: 'courseinginfo',
+        component: () => import(/* webpackChunkName: "about" */ '../views/administrators/CourseingInfoView.vue')
+      },
+      {
+        path: '/administrators/enrollmentadmin',
+        name: 'enrollmentadmin',
+        component: () => import(/* webpackChunkName: "about" */ '../views/administrators/EnrollmentAdminView.vue')
+      },
+      {
+        path: '/administrators/enrollmentplaninfo',
+        name: 'enrollmentplaninfo',
+        component: () => import(/* webpackChunkName: "about" */ '../views/administrators/EnrollmentPlanInfoView.vue')
+      },
+
+      {
+        path: '/administrators/enrollmenttext',
+        name: 'enrollmenttext',
+        component: () => import(/* webpackChunkName: "about" */ '../views/administrators/EnrollmentTextView.vue')
+      },
+      {
+        path: '/administrators/messageinfo',
+        name: 'messageinfo',
+        component: () => import(/* webpackChunkName: "about" */ '../views/administrators/MessageInfoView.vue')
+      },
+      {
+        path: '/administrators/studentrecruitmentbrochure',
+        name: 'studentrecruitmentbrochure',
+        component: () => import(/* webpackChunkName: "about" */ '../views/administrators/StudentRecruitmentBrochureView.vue')
+      },
+      {
+        path: '/administrators/testcourseinfo',
+        name: 'testcourseinfo',
+        component: () => import(/* webpackChunkName: "about" */ '../views/administrators/TestCourseInfoView.vue')
+      },
+    ]
+  },
 
 
 ]

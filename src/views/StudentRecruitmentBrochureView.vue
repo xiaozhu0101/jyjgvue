@@ -82,7 +82,7 @@
 <script>
 
 export default {
-  name: "RegisterCourseView",
+  name: "StudentRecruitmentBrochureView",
   data() {
     return {
       texttop:'招生简章',

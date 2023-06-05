@@ -71,7 +71,7 @@
             <div >
 
               <el-table
-                  :data="courseForm.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase()) ||data.teacher.toLowerCase().includes(search.toLowerCase()) )"
+                  :data="courseForm.filter(data => !search || data.title.toLowerCase().includes(search.toLowerCase())  )"
                   style="width: 100%"
                   :cell-style="{ background:'#d4e4e5'}"
                   :header-cell-style="{

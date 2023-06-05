@@ -49,6 +49,14 @@
 
 export default {
   name: "CustomerView",
+  beforeCreate(){
+
+    if(localStorage.getItem("userid")==''||localStorage.getItem("userkind")!='1'){
+
+        this.$router.push("/login")
+      this.$message.error('请先登录客户账号');
+    }
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
