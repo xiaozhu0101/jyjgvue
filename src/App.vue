@@ -40,11 +40,6 @@
                 在线报名
               </span></el-menu-item>
 
-            <el-menu-item index="testcourse "style="float: right" @click="testcourse">
-              <span  style="font-family: 宋体 ">
-                申请试课
-              </span></el-menu-item>
-
             <el-menu-item index="aboutus "style="float: right" @click="aboutus">
               <span  style="font-family: 宋体 ">
                 联系我们
@@ -96,9 +91,7 @@ export default {
     aboutus(){
       this.$router.push("/aboutus")
     },
-    testcourse(){
-      this.$router.push("/testcourse")
-    },
+
     registercourse(){
       this.$router.push("/registercourse")
     },

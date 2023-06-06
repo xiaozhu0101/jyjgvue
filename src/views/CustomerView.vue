@@ -16,10 +16,7 @@
       <i class="el-icon-menu"></i>
       <span slot="title">个人信息</span>
     </el-menu-item>
-    <el-menu-item index="2" @click="testcourseinfo">
-      <i class="el-icon-s-data"></i>
-      <span slot="title">试课记录</span>
-    </el-menu-item>
+
     <el-menu-item index="3" @click="registercourseinfo">
       <i class="el-icon-document"></i>
       <span slot="title">报名记录</span>
@@ -85,9 +82,7 @@ export default {
     customerinfo(){
       this.$router.push("/customer")
     },
-    testcourseinfo(){
-      this.$router.push("/customer/testcourseinfo")
-    },
+
     registercourseinfo(){
       this.$router.push("/customer/registercourseinfo")
 

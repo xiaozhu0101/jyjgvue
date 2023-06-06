@@ -20,14 +20,14 @@
             <i class="el-icon-s-data"></i>
             <span slot="title">招生计划</span>
           </el-menu-item>
-          <el-menu-item index="3" @click="studentrecruitmentbrochure">
-            <i class="el-icon-document"></i>
-            <span slot="title">招生简章</span>
-          </el-menu-item>
-          <el-menu-item index="4" @click="enrollmenttext">
-            <i class="el-icon-s-order"></i>
-            <span slot="title">宣传文章</span>
-          </el-menu-item>
+<!--          <el-menu-item index="3" @click="studentrecruitmentbrochure">-->
+<!--            <i class="el-icon-document"></i>-->
+<!--            <span slot="title">招生简章</span>-->
+<!--          </el-menu-item>-->
+<!--          <el-menu-item index="4" @click="enrollmenttext">-->
+<!--            <i class="el-icon-s-order"></i>-->
+<!--            <span slot="title">宣传文章</span>-->
+<!--          </el-menu-item>-->
           <el-menu-item index="5" @click="enrollmentadmin">
             <i class="el-icon-s-custom"></i>
             <span slot="title">招生专员</span>
@@ -36,10 +36,10 @@
             <i class="el-icon-s-data"></i>
             <span slot="title">报名信息</span>
           </el-menu-item>
-          <el-menu-item index="7" @click="testcourseinfo">
-            <i class="el-icon-s-data"></i>
-            <span slot="title">试课信息</span>
-          </el-menu-item>
+<!--          <el-menu-item index="7" @click="testcourseinfo">-->
+<!--            <i class="el-icon-s-data"></i>-->
+<!--            <span slot="title">试课信息</span>-->
+<!--          </el-menu-item>-->
           <el-menu-item index="8" @click="messageinfo">
             <i class="el-icon-s-comment"></i>
             <span slot="title">留言评价</span>
@@ -64,6 +64,14 @@
 <script>
 export default {
   name: "AdministratorsView",
+  beforeCreate(){
+
+    if(localStorage.getItem("userid")==''||localStorage.getItem("userkind")!='3'){
+
+      this.$router.push("/login")
+      this.$message.error('请先登录招生专员账号');
+    }
+  },
   methods: {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);

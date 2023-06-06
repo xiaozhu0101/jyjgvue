@@ -85,6 +85,31 @@ const routes = [
   ]
   },
   {
+    path: '/eadmain',
+    name: 'eadmainView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/EAdmainView.vue'),
+    children:[
+
+      {
+        path: '/eadmain',
+        name: 'edmaininfo',
+        component: () => import(/* webpackChunkName: "about" */ '../views/EAdmain/EAdmainInfoView.vue')
+      },
+
+      {
+        path: '/eadmain/courseinfo',
+        name: 'courseinfo',
+        component: () => import(/* webpackChunkName: "about" */ '../views/EAdmain/CouserInfoView.vue')
+      },
+      {
+        path: '/eadmain/registercourseinfo',
+        name: 'registercourseinfo',
+        component: () => import(/* webpackChunkName: "about" */ '../views/EAdmain/RegisterCourseInfoView.vue')
+      },
+
+    ]
+  },
+  {
     path: '/administrators',
     name: 'administrators',
     component: () => import(/* webpackChunkName: "about" */ '../views/AdministratorsView.vue'),

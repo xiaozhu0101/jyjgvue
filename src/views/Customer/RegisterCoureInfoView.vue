@@ -41,6 +41,8 @@ export default {
   name: "RegisterCoureInfoView",
   data() {
     return {
+      isdanger:"",
+
       tableData: [{course:'java',teacher:'王老师',classroom:'a1-302',date:"6月1日 13：40"},
         {course:'C',teacher:'张老师',classroom:'a1-302',date:"6月1日 16：40"},
         {course:'C++',teacher:'赵老师',classroom:'a1-302',date:"6月3日 13：40"},

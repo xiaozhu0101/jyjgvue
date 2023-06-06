@@ -78,7 +78,7 @@
 
 
                 <el-form-item label="课程选择："prop="course" required>
-                  <el-col :span="11">
+                  <el-col :span="10">
                     <el-select v-model="ruleForm.course" filterable placeholder="请选择试课课程">
                       <el-option
                           v-for="item in courses"
@@ -88,8 +88,8 @@
                       </el-option>
                     </el-select>
                   </el-col>
-                  <el-col class="line" :span="2">时间</el-col>
-                  <el-col :span="11">
+                  <el-col class="line" :span="3">时间</el-col>
+                  <el-col :span="10">
                     <el-select v-model="ruleForm.date" placeholder="请选择课程时间">
                       <el-option
                           v-for="item in dates"

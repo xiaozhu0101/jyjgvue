@@ -81,22 +81,24 @@
 
                 <el-table-column
                     prop="title"
-                    label="课程"
+                    label="标题"
+                    width="180">
+                </el-table-column>
+
+                <el-table-column
+                    prop="startDate"
+                    label="招生开始时间"
                     width="180">
                 </el-table-column>
                 <el-table-column
-                    prop="teacher"
-                    label="教师"
-                    width="100"
-                >
-                </el-table-column>
-                <el-table-column
-                    prop="startDate"
-                    label="开课时间">
-                </el-table-column>
-                <el-table-column
                     prop="endDate"
-                    label="结课时间">
+                    label="招生结束时间"
+                    width="180">
+                </el-table-column>
+                <el-table-column
+                    prop="createdAt"
+                    label="创建时间"
+                    width="180">
                 </el-table-column>
 
                 <el-table-column
@@ -105,7 +107,7 @@
                     <el-input
                         v-model="search"
                         size="mini"
-                        placeholder="输入课程或老师信息搜索"/>
+                        placeholder="输入课程信息搜索"/>
                   </template>
                   <template slot-scope="scope">
                     <el-button
@@ -120,10 +122,11 @@
                   >
                 <div style="padding-left: 20px">
                 <el-descriptions title="课程信息" column="1">
-                  <el-descriptions-item label="课程">{{ couse.title }}</el-descriptions-item>
-                  <el-descriptions-item label="教师">{{ couse.teacher }}</el-descriptions-item>
-                  <el-descriptions-item label="开课时间">{{ couse.startDate }}</el-descriptions-item>
-                  <el-descriptions-item label="结课时间">{{ couse.endDate }}</el-descriptions-item>
+                  <el-descriptions-item label="标题">{{ couse.title }}</el-descriptions-item>
+                  <el-descriptions-item label="招生开始时间">{{ couse.startDate }}</el-descriptions-item>
+                  <el-descriptions-item label="招生结束时间">{{ couse.endDate }}</el-descriptions-item>
+                  <el-descriptions-item label="创建时间">{{ couse.createdAt}}</el-descriptions-item>
+                  <el-descriptions-item label="内容">{{ couse.content}}</el-descriptions-item>
                 </el-descriptions>
                 </div>
               </el-drawer>
@@ -160,7 +163,7 @@ export default {
     this.$axios.get('http://localhost:8000/enrollmentPlan/page', {
       params: {
         page: 1,
-        pageSize: 10,
+        pageSize: 50,
       }
     })
         .then(res => {

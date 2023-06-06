@@ -78,7 +78,8 @@ export default {
     };
     return {
       loading: false,
-
+      loginpath:'',
+      pushpath:'',
       ruleForm: {
         pass: "",
         id: "",
@@ -96,6 +97,10 @@ export default {
     if(localStorage.getItem("userid")!=''){
       if(localStorage.getItem("userkind")=='1'){
         this.$router.push("/customer")
+      }else if(localStorage.getItem("userkind")=='2'){
+        this.$router.push("/eadmain")
+      }else if(localStorage.getItem("userkind")=='3') {
+        this.$router.push("/administrators")
       }
     }
   },
@@ -103,9 +108,25 @@ export default {
   methods: {
     // 表单验证
     submitForm(formName) {
-      console.log(this.ruleForm.id ,this.ruleForm.pass)
-
-          this.$axios.post('http://localhost:8000/customer/login', {
+      console.log(this.ruleForm.userkind)
+      switch (this.ruleForm.userkind){
+        case '1':{
+          this.loginpath="http://localhost:8000/customer/login"
+          this.pushpath="/customer"
+          break
+        }
+        case '2':{
+          this.loginpath="http://localhost:8000/extensionworker/login"
+          this.pushpath="/eadmain"
+          break
+        }
+        case '3':{
+          this.loginpath="http://localhost:8000/admin/login"
+          this.pushpath="/administrators"
+          break
+        }
+      }
+          this.$axios.post(this.loginpath, {
             phone: this.ruleForm.id,
             password: this.ruleForm.pass
           })
